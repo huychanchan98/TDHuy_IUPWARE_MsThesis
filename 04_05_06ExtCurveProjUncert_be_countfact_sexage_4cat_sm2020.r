@@ -26,8 +26,7 @@
 # In brief, once we extrapolate the curve, we estimate the daily number of attributable 
 #   deaths (AN) in each scenario, GCM and temperature range. 
 # Then, we compute the sum of ANs per each 10-years period for the ensemble 
-#   per each RCP and temperature range. We also estimate the difference in AN 
-#   relative to the ANs estimated for the current days (2010-19). 
+#   per temperature range. 
 # By dividing between the total mortality, we estimate the corresponding 
 #   attributable fractions (AFs).
 # Uncertainty of the estimated impacts is expressed in terms of empirical 
@@ -149,8 +148,7 @@ for (i in seq(m_category)){
 # COMPUTE AN/AF (95%CI) IN THE ENSEMBLE, BY RANGE & PERIOD & RCP
 
 # CREATE NEW OBJECTS TO STORE RESULTS
-# We now create 4 new arrays (2 arrays to store the abs and rel AN, and another 2
-#   to store the estimated rel and abs AF) with 4 dimensions each to store the 
+# We now create 4 new arrays (2 arrays to store the abs AN and abs AF) with 4 dimensions each to store the 
 #   ensemble estimates (average impacts across GCMs) with the empirical 
 #   95% confidence intervals. 
 # In this case, the 4 dimensions correspond to the 10-year period, the point estimate 
@@ -184,44 +182,6 @@ afabs_mod[,] <- anabs_mod[,]/deathperiod*100
 #rm(ansim)
 
 ################################################################################
-# TEST BAR PLOT #
-# Create the afabs data frame
-# afabs_data <- data.frame(
-#   age_group = c("<65y", "65-74y", "75-84y", ">85y"),
-#   est = afabs[, "est"],
-#   ci.l = afabs[, "ci.l"],
-#   ci.u = afabs[, "ci.u"]
-# )
-# 
-# # Print the data to verify
-# print(afabs)
-# 
-# # Create the barplot
-# barplot <- ggplot(afabs_data, aes(x=age_group, y=est, fill=age_group)) + 
-#   geom_bar(stat="identity", position="dodge", width=0.7) +
-#   geom_errorbar(aes(ymin=ci.l, ymax=ci.u), width=0.2, size=0.7) +
-#   scale_fill_manual(values = c("red", "orange", "green", "blue"),
-#                     labels=c("<65y", "65-74y", "75-84y", ">85y")) +
-#   labs(x = "Age Group", y = "Heat-related Mortality (%)",
-#        title = "Heat-related Mortality by Age Group") +
-#   theme_minimal() +
-#   theme(legend.position="bottom",
-#         legend.title = element_blank(),
-#         legend.spacing.x= unit(0.3, 'cm'),
-#         legend.text = element_text(size=11),
-#         plot.margin = unit(c(2, 1, 1, 0), units = "lines"),
-#         axis.text.y = element_text(size=10), 
-#         axis.title.y = element_text(size=12, vjust = 0.5),
-#         panel.grid.major.y = element_line(linewidth=1),
-#         panel.grid.major.x = element_blank(),
-#         panel.grid.minor = element_blank())
-# 
-# # Save the plot
-# #ggsave("barplot_age_group.pdf", plot = barplot, width=10, height=6)
-# 
-# # Display the plot
-# print(barplot)
-
 #----------------------------- BARPLOT -----------------------------------------
 # Create afabs_data data frame
 afabs_data <- data.frame(
