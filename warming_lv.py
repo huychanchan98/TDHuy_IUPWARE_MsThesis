@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun 13 18:22:14 2024
-@author: Admin
+
+@author: Huy Tran Duc - IUPWARE - KUL
+Master thesis - Extreme Event Impact Attribution: Heat-related Mortality Attribution of the 2020 Heatwave in Belgium
 
 Calculate warming level in Belgium during heatwaves period
 # The resulting slopes from the linear regressions inform on the warming (in °C) per °C GMST increase
